@@ -25,7 +25,7 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("After n pushes to an empty stack, n > 0, the stack is not empty and its size is n")
+    @DisplayName("Test if after n pushes to an empty stack, n > 0, the stack is not empty and its size is n")
     public void testPush() throws Exception {
         stack.push(1);
         assert !stack.isEmpty();
@@ -36,14 +36,14 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("If one pushes x then pops, the value popped is x")
+    @DisplayName("Test if one pushes x then pops, the value popped is x")
     public void testPushPop() throws Exception {
         stack.push(1);
         assert stack.pop() == 1;
     }
 
     @Test
-    @DisplayName("If one pushes x then peeks, the value returned is x, but the size stays the same")
+    @DisplayName("Test if one pushes x then peeks, the value returned is x, but the size stays the same")
     public void testPushPeek() throws Exception {
         stack.push(1);
         assert stack.peek() == 1;
@@ -51,7 +51,7 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("If the size is n, then after n pops, the stack is empty and has a size 0")
+    @DisplayName("Test if the size is n, then after n pops, the stack is empty and has a size 0")
     public void testPop() throws Exception {
         stack.push(1);
         stack.push(2);
@@ -64,7 +64,7 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("Popping from an empty stack does throw a NoSuchElementException")
+    @DisplayName("Test popping from an empty stack does throw a NoSuchElementException")
     public void testPopException() throws Exception {
         try {
             stack.pop();
@@ -74,7 +74,7 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("Peeking into an empty stack does throw a NoSuchElementException")
+    @DisplayName("Test peeking into an empty stack does throw a NoSuchElementException")
     public void testPeekException() throws Exception {
         try {
             stack.peek();
@@ -84,7 +84,7 @@ public class TqsStackTest {
     }
 
     @Test
-    @DisplayName("For bounded stacks only: pushing onto a full stack does throw an IllegalStateException")
+    @DisplayName("Test for bounded stacks only: pushing onto a full stack does throw an IllegalStateException")
     public void testPushException() throws Exception {
         for (int i = 0; i < 10; i++) {
             stack.push(i);

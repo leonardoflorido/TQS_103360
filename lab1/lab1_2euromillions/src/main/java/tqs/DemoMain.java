@@ -1,11 +1,12 @@
 package tqs;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tqs.euromillions.CuponEuromillions;
 import tqs.euromillions.Dip;
 import tqs.euromillions.EuromillionsDraw;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import static java.lang.invoke.MethodHandles.lookup;
 
 /**
@@ -25,12 +26,12 @@ public class DemoMain {
 
         // simulate a random draw
         EuromillionsDraw draw = EuromillionsDraw.generateRandomDraw();
-        log.info("Draw results:\n{}", draw.getDrawResults().format() );
+        log.info("Draw results:\n{}", draw.getDrawResults().format());
 
         //report results
         log.info("You scored (matches): ");
         for (Dip dip : draw.findMatchesFor(myBet)) {
-           log.info( dip.format());
+            log.info(dip.format());
         }
     }
 }

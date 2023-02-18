@@ -1,12 +1,8 @@
 package tqs.euromillions;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.Arrays;
-import java.util.Objects;
-
 import tqs.sets.BoundedSetOfNaturals;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -15,11 +11,11 @@ import java.util.Random;
  * @author ico0
  */
 public class Dip {
-    static Random generator = new Random();
     public static final int NUMBERS_RANGE_MAX = 50;
     public static final int STARS_RANGE_MAX = 10;
     public static final int NUMBERS_REQUIRED = 5;
     public static final int STARS_REQUIRED = 2;
+    static Random generator = new Random();
     private BoundedSetOfNaturals numbers;
     private BoundedSetOfNaturals stars;
 
@@ -50,15 +46,7 @@ public class Dip {
 
     }
 
-    public BoundedSetOfNaturals getNumbersColl() {
-        return numbers;
-    }
-
-    public BoundedSetOfNaturals getStarsColl() {
-        return stars;
-    }
-
-    public static Dip generateRandomDip()  {
+    public static Dip generateRandomDip() {
 
 
         Dip randomDip = new Dip();
@@ -77,6 +65,14 @@ public class Dip {
             }
         }
         return randomDip;
+    }
+
+    public BoundedSetOfNaturals getNumbersColl() {
+        return numbers;
+    }
+
+    public BoundedSetOfNaturals getStarsColl() {
+        return stars;
     }
 
     @Override

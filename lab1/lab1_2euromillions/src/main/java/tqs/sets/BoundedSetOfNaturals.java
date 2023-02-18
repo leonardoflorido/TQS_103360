@@ -16,6 +16,26 @@ public class BoundedSetOfNaturals implements Iterable<Integer> {
     private ArrayList<Integer> collection;
     private int maxSize;
 
+    public BoundedSetOfNaturals(int maxSize) {
+        this.maxSize = maxSize;
+        this.collection = new ArrayList<>();
+    }
+
+    /**
+     * create a new instance initialized with the values passed as argument.
+     * The maxSize would be the size of the array
+     *
+     * @param values elements to initialize this new Set
+     * @return the new Set
+     */
+    public static BoundedSetOfNaturals fromArray(int[] values) {
+        BoundedSetOfNaturals newSet = new BoundedSetOfNaturals(values.length);
+        for (int element : values) {
+            newSet.add(element);
+        }
+        return newSet;
+    }
+
     public void add(int element) {
         if (this.collection.size() >= maxSize) {
             throw new IllegalArgumentException("bounded set is full. no more elements allowed.");
@@ -37,27 +57,6 @@ public class BoundedSetOfNaturals implements Iterable<Integer> {
             this.add(number);
         }
     }
-
-    public BoundedSetOfNaturals(int maxSize) {
-        this.maxSize = maxSize;
-        this.collection = new ArrayList<>();
-    }
-
-    /**
-     * create a new instance initialized with the values passed as argument.
-     * The maxSize would be the size of the array
-     *
-     * @param values elements to initialize this new Set
-     * @return the new Set
-     */
-    public static BoundedSetOfNaturals fromArray(int[] values) {
-        BoundedSetOfNaturals newSet = new BoundedSetOfNaturals(values.length);
-        for (int element : values) {
-            newSet.add(element);
-        }
-        return newSet;
-    }
-
 
     public int size() {
         return this.collection.size();

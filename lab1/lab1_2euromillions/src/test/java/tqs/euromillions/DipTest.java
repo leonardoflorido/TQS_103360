@@ -4,10 +4,13 @@
  */
 package tqs.euromillions;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.*;
-import tqs.euromillions.Dip;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author ico0
@@ -40,11 +43,11 @@ public class DipTest {
 
         // insufficient args
         assertThrows(IllegalArgumentException.class,
-                () -> new Dip( new int[]{10, 11}, new int[]{} ) );
+                () -> new Dip(new int[]{10, 11}, new int[]{}));
 
         //negative numbers
         assertThrows(IllegalArgumentException.class,
-                () -> new Dip( new int[]{10, 11, 12, 13, -1}, new int[]{1, 2} ) );
+                () -> new Dip(new int[]{10, 11, 12, 13, -1}, new int[]{1, 2}));
 
         // this test will reveal that the code was not yet checking ranges
 
@@ -57,12 +60,9 @@ public class DipTest {
         // creating Dip with numbers or starts outside the expected range
         // expects an exception
         assertThrows(IllegalArgumentException.class,
-                () -> new Dip( new int[]{10, 11, 12, 13, Dip.NUMBERS_RANGE_MAX * 2}, new int[]{1,2} ) );
+                () -> new Dip(new int[]{10, 11, 12, 13, Dip.NUMBERS_RANGE_MAX * 2}, new int[]{1, 2}));
         assertThrows(IllegalArgumentException.class,
-                () -> new Dip( new int[]{11, 12, 13, 14, 15}, new int[]{ Dip.STARS_RANGE_MAX*2 ,1} ) );
+                () -> new Dip(new int[]{11, 12, 13, 14, 15}, new int[]{Dip.STARS_RANGE_MAX * 2, 1}));
 
     }
-
-
-
 }

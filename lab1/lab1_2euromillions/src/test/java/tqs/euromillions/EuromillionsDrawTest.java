@@ -1,18 +1,17 @@
 package tqs.euromillions;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-import org.junit.jupiter.api.*;
-import tqs.euromillions.CuponEuromillions;
-import tqs.euromillions.Dip;
-import tqs.euromillions.EuromillionsDraw;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EuromillionsDrawTest {
 
     private CuponEuromillions sampleCoupon;
 
     @BeforeEach
-    public void setUp()  {
+    public void setUp() {
         sampleCoupon = new CuponEuromillions();
         sampleCoupon.appendDip(Dip.generateRandomDip());
         sampleCoupon.appendDip(Dip.generateRandomDip());
@@ -36,7 +35,7 @@ public class EuromillionsDrawTest {
         testDraw = new EuromillionsDraw(new Dip(new int[]{9, 10, 11, 12, 13}, new int[]{2, 3}));
         matchesFound = testDraw.findMatchesFor(sampleCoupon).get(2);
         // compare empty with the matches found
-        assertEquals( new Dip(), matchesFound);
+        assertEquals(new Dip(), matchesFound);
     }
 
 }

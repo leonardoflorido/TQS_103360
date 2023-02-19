@@ -63,6 +63,5 @@ public class DipTest {
                 () -> new Dip(new int[]{10, 11, 12, 13, Dip.NUMBERS_RANGE_MAX * 2}, new int[]{1, 2}));
         assertThrows(IllegalArgumentException.class,
                 () -> new Dip(new int[]{11, 12, 13, 14, 15}, new int[]{Dip.STARS_RANGE_MAX * 2, 1}));
-
     }
 }

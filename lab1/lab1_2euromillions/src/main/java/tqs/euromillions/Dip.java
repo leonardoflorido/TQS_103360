@@ -2,6 +2,7 @@ package tqs.euromillions;
 
 import tqs.sets.BoundedSetOfNaturals;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
@@ -27,15 +28,15 @@ public class Dip {
     public Dip(int[] arrayOfNumbers, int[] arrayOfStarts) {
         this();
 
-       /* code to check ranges
-       if( ! Arrays.stream(arrayOfNumbers).allMatch( nr -> nr >= 1 && nr <= NUMBERS_RANGE_MAX) ){
+        // code to check ranges
+        if (!Arrays.stream(arrayOfNumbers).allMatch(nr -> nr >= 1 && nr <= NUMBERS_RANGE_MAX)) {
             throw new IllegalArgumentException("numbers set are outside the expected range!");
         }
 
-        if( ! Arrays.stream(arrayOfStarts).allMatch(nr -> nr >= 1 && nr <= STARS_RANGE_MAX) ){
+        if (!Arrays.stream(arrayOfStarts).allMatch(nr -> nr >= 1 && nr <= STARS_RANGE_MAX)) {
             throw new IllegalArgumentException("numbers set are outside the expected range!");
         }
-        */
+
 
         if (NUMBERS_REQUIRED == arrayOfNumbers.length && STARS_REQUIRED == arrayOfStarts.length) {
             numbers.add(arrayOfNumbers);
@@ -103,7 +104,7 @@ public class Dip {
 
 
     /**
-     * prepares a string representation of the data structure, formated for
+     * prepares a string representation of the data structure, formatted for
      * printing
      *
      * @return formatted string with data
@@ -116,7 +117,7 @@ public class Dip {
         }
         sb.append("] S[");
         for (int star : getStarsColl()) {
-            // the formating codes were missing
+            // the formatting codes were missing
             sb.append(String.format("%3d", star));
         }
         sb.append("]");

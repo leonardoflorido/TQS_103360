@@ -29,19 +29,19 @@ public class BoundedSetOfNaturals implements Iterable&lt;Integer&gt; {
      * @return the new Set
      */
     public static BoundedSetOfNaturals fromArray(int[] values) {
-<span class="nc" id="L32">        BoundedSetOfNaturals newSet = new BoundedSetOfNaturals(values.length);</span>
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        for (int element : values) {</span>
-<span class="nc" id="L34">            newSet.add(element);</span>
+<span class="fc" id="L32">        BoundedSetOfNaturals newSet = new BoundedSetOfNaturals(values.length);</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        for (int element : values) {</span>
+<span class="fc" id="L34">            newSet.add(element);</span>
         }
-<span class="nc" id="L36">        return newSet;</span>
+<span class="fc" id="L36">        return newSet;</span>
     }
 
     public void add(int element) {
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (this.collection.size() &gt;= maxSize) {</span>
-<span class="nc" id="L41">            throw new IllegalArgumentException(&quot;bounded set is full. no more elements allowed.&quot;);</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (this.collection.size() &gt;= maxSize) {</span>
+<span class="fc" id="L41">            throw new IllegalArgumentException(&quot;bounded set is full. no more elements allowed.&quot;);</span>
         }
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">        if (this.collection.contains(element)) {</span>
-<span class="nc" id="L44">            throw new IllegalArgumentException(&quot;duplicate value: &quot; + element);</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (this.collection.contains(element)) {</span>
+<span class="fc" id="L44">            throw new IllegalArgumentException(&quot;duplicate value: &quot; + element);</span>
         }
 
 <span class="pc bpc" id="L47" title="1 of 2 branches missed.">        if (element &lt;= 0) {</span>
@@ -59,46 +59,51 @@ public class BoundedSetOfNaturals implements Iterable&lt;Integer&gt; {
 <span class="fc" id="L59">    }</span>
 
     public int size() {
-<span class="nc" id="L62">        return this.collection.size();</span>
+<span class="fc" id="L62">        return this.collection.size();</span>
     }
 
 
     //TODO implement the intersect logic
     public boolean intersects(BoundedSetOfNaturals subset) {
-<span class="nc" id="L68">        return false;</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        for (Integer element : subset) {</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">            if (this.contains(element)) {</span>
+<span class="fc" id="L70">                return true;</span>
+            }
+<span class="fc" id="L72">        }</span>
+<span class="fc" id="L73">        return false;</span>
     }
 
     public boolean contains(Integer element) {
-<span class="fc" id="L72">        return collection.contains(element);</span>
+<span class="fc" id="L77">        return collection.contains(element);</span>
     }
 
     @Override
     public Iterator&lt;Integer&gt; iterator() {
-<span class="fc" id="L77">        return collection.iterator();</span>
+<span class="fc" id="L82">        return collection.iterator();</span>
     }
 
 
     @Override
     public int hashCode() {
-<span class="nc" id="L83">        int hash = 7;</span>
-<span class="nc" id="L84">        hash = 67 * hash + Objects.hashCode(this.collection);</span>
-<span class="nc" id="L85">        return hash;</span>
+<span class="nc" id="L88">        int hash = 7;</span>
+<span class="nc" id="L89">        hash = 67 * hash + Objects.hashCode(this.collection);</span>
+<span class="nc" id="L90">        return hash;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L91">            return true;</span>
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L96">            return true;</span>
         }
-<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if (obj == null) {</span>
-<span class="nc" id="L94">            return false;</span>
+<span class="pc bpc" id="L98" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L99">            return false;</span>
         }
-<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L97">            return false;</span>
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
+<span class="nc" id="L102">            return false;</span>
         }
 
-<span class="fc" id="L100">        final BoundedSetOfNaturals other = (BoundedSetOfNaturals) obj;</span>
-<span class="fc" id="L101">        return Objects.equals(this.collection, other.collection);</span>
+<span class="fc" id="L105">        final BoundedSetOfNaturals other = (BoundedSetOfNaturals) obj;</span>
+<span class="fc" id="L106">        return Objects.equals(this.collection, other.collection);</span>
     }
 
 

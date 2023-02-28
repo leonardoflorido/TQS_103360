@@ -6,7 +6,6 @@
 package geocoding;
 
 import connection.ISimpleHttpClient;
-import demo.MainGeocode;
 import org.apache.http.ParseException;
 import org.apache.http.client.utils.URIBuilder;
 import org.json.simple.JSONArray;
@@ -42,7 +41,6 @@ public class AddressResolver {
         URIBuilder uriBuilder = new URIBuilder("https://www.mapquestapi.com/geocoding/v1/reverse");
         uriBuilder.addParameter("key", apiKey);
         uriBuilder.addParameter("location", (new Formatter()).format(Locale.US, "%.6f,%.6f", latitude, longitude).toString());
-
 
 
         String apiResponse = this.httpClient.doHttpGet(uriBuilder.build().toString());

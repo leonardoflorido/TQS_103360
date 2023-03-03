@@ -1,12 +1,10 @@
 package tqs.cars;
 
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.TestPropertySource;
@@ -16,8 +14,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import tqs.cars.data.CarRepository;
 import tqs.cars.model.Car;
-
-import static org.hamcrest.Matchers.equalTo;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,7 +27,7 @@ class GsCarsContainersApplicationTests {
             .withUsername("demo")
             .withPassword("demopass")
             .withDatabaseName("test_db");
-            /// .withInitScript( PATH )
+    /// .withInitScript( PATH )
     @LocalServerPort
     int localPortForTestServer;
     Car car1, car2;
@@ -60,7 +56,7 @@ class GsCarsContainersApplicationTests {
                 .scheme("http")
                 .host("127.0.0.1")
                 .port(localPortForTestServer)
-                .pathSegment("api", "cars", String.valueOf( car1.getCarId()) )
+                .pathSegment("api", "cars", String.valueOf(car1.getCarId()))
                 .build()
                 .toUriString();
 
@@ -72,5 +68,4 @@ class GsCarsContainersApplicationTests {
     void anotherTest() {
         //TODO
     }
-
 }

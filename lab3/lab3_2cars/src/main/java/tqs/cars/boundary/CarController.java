@@ -19,13 +19,14 @@ public class CarController {
     }
 
 
-    @PostMapping("/cars") public ResponseEntity<Car> createCar(@RequestBody Car oneCar) {
+    @PostMapping("/cars")
+    public ResponseEntity<Car> createCar(@RequestBody Car oneCar) {
         HttpStatus status = HttpStatus.CREATED;
         Car saved = carManagerService.save(oneCar);
         return new ResponseEntity<>(saved, status);
     }
 
-    @GetMapping(path = "/cars",  produces = "application/json")
+    @GetMapping(path = "/cars", produces = "application/json")
     public List<Car> getAllCars() {
         return carManagerService.getAllCars();
     }
@@ -37,5 +38,4 @@ public class CarController {
                 .orElseThrow(() -> new ResourceNotFoundException("Car not found for id: " + carId));
         return ResponseEntity.ok().body(car);
     }
-
 }

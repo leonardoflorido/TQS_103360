@@ -10,7 +10,7 @@ import tqs.cars.model.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-public class CarRepositoryTest {
+class CarRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 
@@ -18,7 +18,7 @@ public class CarRepositoryTest {
     private CarRepository carRepository;
 
     @Test
-    public void whenFindById_thenReturnCar() {
+    void whenFindById_thenReturnCar() {
         // given
         Car car = new Car("porsche", "911");
         entityManager.persist(car);
@@ -32,13 +32,13 @@ public class CarRepositoryTest {
     }
 
     @Test
-    public void whenInvalidId_thenReturnNull() {
+    void whenInvalidId_thenReturnNull() {
         Car fromDb = carRepository.findById(-11L).orElse(null);
         assertThat(fromDb).isNull();
     }
 
     @Test
-    public void whenFindAll_thenReturnAllCars() {
+    void whenFindAll_thenReturnAllCars() {
         Car porsche = new Car("porsche", "911");
         Car ferrari = new Car("ferrari", "f40");
         Car tesla = new Car("tesla", "model x");

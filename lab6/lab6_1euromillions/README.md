@@ -1,6 +1,6 @@
 # EuroMillions
 
-![Quality Gate](imgs/euromillions.png)
+![Quality Gate](imgs/quality-gate.png)
 
 ## Review Questions
 

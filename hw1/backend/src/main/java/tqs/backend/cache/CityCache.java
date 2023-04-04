@@ -27,13 +27,14 @@ public class CityCache {
     public City get(String cityName) {
         requestCount++;
         CacheEntry entry = cache.get(cityName);
-        if (entry != null && entry.isExpired()) {
+        if (entry == null) {
+            hitCount++;
+        } else if (entry.isExpired()) {
             cache.remove(cityName);
             LOGGER.log(Level.INFO, "Removed expired entry for city: " + cityName);
             return null;
-        } else if (entry != null) {
+        } else {
             entry.resetExpirationTime();
-            hitCount++;
         }
         return entry != null ? entry.getCity() : null;
     }

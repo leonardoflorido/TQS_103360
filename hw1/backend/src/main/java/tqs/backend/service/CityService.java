@@ -34,7 +34,7 @@ public class CityService {
             city = new City(cityName, country, geocoding.getLat(), geocoding.getLon(), airPollution.getAirQuality(), airPollution.getCo(), airPollution.getNo(), airPollution.getNo2(), airPollution.getO3(), airPollution.getSo2(), airPollution.getPm2_5(), airPollution.getPm10(), airPollution.getNh3());
 
             // Add the city to the cache
-            cityCache.put(city, 30000);
+            cityCache.put(city, 30000L);
         }
         return city;
     }

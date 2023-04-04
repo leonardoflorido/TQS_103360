@@ -1,5 +1,6 @@
 package tqs.backend.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +18,14 @@ public class CityController {
     }
 
     @GetMapping("/air_pollution")
-    public City getAirPollution(@RequestParam String city, @RequestParam String country) {
-        return cityService.getCity(city, country);
+    public ResponseEntity<City> getAirPollution(@RequestParam String cityName, @RequestParam String country) {
+        City city = cityService.getCity(cityName, country);
+
+        if (city == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(city);
     }
 
     @GetMapping("/stats")

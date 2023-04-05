@@ -28,12 +28,12 @@ public class CityController {
         return ResponseEntity.ok(city);
     }
 
-    @GetMapping("/stats")
+    @GetMapping("/cache/stats")
     public Object getStats() {
         return cityService.getStats();
     }
 
-    @GetMapping("/cache")
+    @GetMapping("/cache/data")
     public Object getCache() {
         return cityService.getCache();
     }

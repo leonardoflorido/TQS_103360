@@ -1,72 +1,90 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import {
+  Grid,
+  TextField,
+  Button,
+  Typography,
+  Table,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@material-ui/core";
+import { Autocomplete } from "@mui/material";
+import countries from "iso-3166-country-list";
+
+const countryList = countries.map((country) => country.name);
 
 const AirPollution = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [AirPollutionData, setAirPollutionData] = useState(null);
+  const [airPollutionData, setAirPollutionData] = useState(null);
 
-  const getAirPollution = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:8080/api/air_quality?city=${city}&country=${country}`
-      );
-      const data = await response.json();
-      setAirPollutionData(data);
-    } catch (error) {
-      console.error(error);
-    }
+  const handleCityChange = (event) => {
+    setCity(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    getAirPollution();
+  const handleSearchClick = () => {
+    const cityName =
+      city.substring(0, 1).toUpperCase() + city.substring(1).toLowerCase();
+    const countryCode = countries.find((c) => c.name === country).code;
+    fetch(
+      `http://localhost:8080/api/air_pollution?cityName=${cityName}&country=${countryCode}`
+    )
+      .then((response) => response.json())
+      .then((data) => setAirPollutionData(data))
+      .catch((error) => console.error(error));
   };
 
   return (
-    <div>
-      <h1>Air Pollution</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="country">Country:</label>
-          <select
-            id="country"
-            name="country"
-            value={country}
-            onChange={(event) => setCountry(event.target.value)}
-          >
-            <option value="">--Please choose a country--</option>
-            <option value="PT">Portugal</option>
-            <option value="Canada">Canada</option>
-            <option value="Mexico">Mexico</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="city">City:</label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={city}
-            onChange={(event) => setCity(event.target.value)}
-          />
-        </div>
-        <button type="submit">Search Air Pollution</button>
-      </form>
-      {AirPollutionData && (
-        <div>
-          <h2>{`${city}, ${country}`}</h2>
-          <p>Air Quality: {AirPollutionData.airQuality}</p>
-          <p>CO: {AirPollutionData.co}</p>
-          <p>NO: {AirPollutionData.no}</p>
-          <p>NO2: {AirPollutionData.no2}</p>
-          <p>O3: {AirPollutionData.o3}</p>
-          <p>SO2: {AirPollutionData.so2}</p>
-          <p>PM2.5: {AirPollutionData.pm2_5}</p>
-          <p>PM10: {AirPollutionData.pm10}</p>
-          <p>NH3: {AirPollutionData.nh3}</p>
-        </div>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Typography variant="h2" align="center">
+          Air Pollution
+        </Typography>
+      </Grid>
+      <Grid item xs={6}>
+        <TextField
+          label="City"
+          value={city}
+          onChange={handleCityChange}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={6}>
+        <Autocomplete
+          value={country === "" ? null : country}
+          id="country-autocomplete"
+          options={countryList}
+          onChange={(e, data) => setCountry(data)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Choose a country"
+              variant="outlined"
+            />
+          )}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="contained" color="primary" onClick={handleSearchClick}>
+          Search Air Pollution
+        </Button>
+      </Grid>
+      {airPollutionData && (
+        <Grid item xs={12}>
+          <Table>
+            <TableBody>
+              {Object.entries(airPollutionData).map(([key, value]) => (
+                <TableRow key={key}>
+                  <TableCell>{key}</TableCell>
+                  <TableCell>{value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Grid>
       )}
-    </div>
+    </Grid>
   );
 };
 

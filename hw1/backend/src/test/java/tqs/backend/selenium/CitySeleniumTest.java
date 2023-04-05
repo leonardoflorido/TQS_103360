@@ -1,37 +1,21 @@
 package tqs.backend.selenium;
 
 import io.github.bonigarcia.seljup.SeleniumJupiter;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @ExtendWith(SeleniumJupiter.class)
 public class CitySeleniumTest {
-    JavascriptExecutor js;
-    private WebDriver driver;
-
-    @Before
-    public void setUp() {
-        driver = new EdgeDriver();
-        js = (JavascriptExecutor) driver;
-        Map<String, Object> vars = new HashMap<String, Object>();
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
-
     @Test
-    public void airPollutionTest() {
+    public void airPollution(EdgeDriver driver) {
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1552, 849));
         driver.findElement(By.cssSelector(".MuiInput-input")).click();
@@ -51,6 +35,11 @@ public class CitySeleniumTest {
             WebElement element = driver.findElement(By.tagName("body"));
             Actions builder = new Actions(driver);
             builder.moveToElement(element, 0, 0).perform();
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         {
             List<WebElement> elements = driver.findElements(By.cssSelector(".MuiTableRow-root:nth-child(1) > .MuiTableCell-root:nth-child(2)"));

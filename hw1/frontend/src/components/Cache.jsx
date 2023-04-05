@@ -32,7 +32,7 @@ const Cache = () => {
     fetchData();
 
     // Fetch data every 2 seconds
-    const interval = setInterval(fetchData, 2000);
+    const interval = setInterval(fetchData, 1000);
 
     // Cleanup function to clear interval when component unmounts
     return () => clearInterval(interval);

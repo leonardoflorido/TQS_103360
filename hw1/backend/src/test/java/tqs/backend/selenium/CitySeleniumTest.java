@@ -13,9 +13,9 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 @ExtendWith(SeleniumJupiter.class)
-public class CitySeleniumTest {
+class CitySeleniumTest {
     @Test
-    public void airPollution(EdgeDriver driver) {
+    void airPollution(EdgeDriver driver) {
         driver.get("http://localhost:3000/");
         driver.manage().window().setSize(new Dimension(1552, 849));
         driver.findElement(By.cssSelector(".MuiInput-input")).click();

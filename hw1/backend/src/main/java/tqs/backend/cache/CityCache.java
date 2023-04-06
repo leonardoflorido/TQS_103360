@@ -3,6 +3,7 @@ package tqs.backend.cache;
 import tqs.backend.model.City;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -21,7 +22,7 @@ public class CityCache {
     }
 
     public void put(City city, long timeToLive) {
-        cache.put(city.getCityName(), new CacheEntry(city, timeToLive));
+        cache.put(city.cityName(), new CacheEntry(city, timeToLive));
     }
 
     public City get(String cityName) {
@@ -31,7 +32,8 @@ public class CityCache {
             hitCount++;
         } else if (entry.isExpired()) {
             cache.remove(cityName);
-            LOGGER.log(Level.INFO, "Removed expired entry for city: " + cityName);
+            LOGGER.log(Level.INFO, String.format("Removed expired entry for city: %s", cityName)
+            );
             return null;
         } else {
             entry.resetExpirationTime();
@@ -39,16 +41,16 @@ public class CityCache {
         return entry != null ? entry.getCity() : null;
     }
 
-    public HashMap<String, Long> getStats() {
+    public Map<String, Long> getStats() {
         HashMap<String, Long> stats = new HashMap<>();
         stats.put("requestCount", requestCount);
         stats.put("hitCount", hitCount);
         return stats;
     }
 
-    public HashMap<String, City> getCache() {
+    public Map<String, City> getCache() {
         HashMap<String, City> result = new HashMap<>();
-        for (HashMap.Entry<String, CacheEntry> entry : cache.entrySet()) {
+        for (Map.Entry<String, CacheEntry> entry : cache.entrySet()) {
             String cityName = entry.getKey();
             CacheEntry cacheEntry = entry.getValue();
             if (!cacheEntry.isExpired()) {
@@ -63,7 +65,7 @@ public class CityCache {
             int initialSize = cache.size();
             cache.entrySet().removeIf(entry -> entry.getValue().isExpired());
             int finalSize = cache.size();
-            LOGGER.log(Level.INFO, "Removed " + (initialSize - finalSize) + " expired cache entries");
+            LOGGER.log(Level.INFO, String.format("Removed %d expired cache entries", (initialSize - finalSize)));
         }, 0, 1, TimeUnit.MINUTES);
     }
 

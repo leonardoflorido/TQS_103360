@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(CityController.class)
-public class CityControllerTest {
+class CityControllerTest {
     @Autowired
     private MockMvc mvc;
 
@@ -32,17 +32,17 @@ public class CityControllerTest {
 
     @Test
     @DisplayName("Test the GET /api/air_pollution endpoint with valid city name")
-    public void whenGetCityByNameAndCountry_thenReturnJsonArray() throws Exception {
+    void whenGetCityByNameAndCountry_thenReturnJsonArray() throws Exception {
         String cityName = "Porto";
         String country = "PT";
 
         Geocoding geocoding = GeocodingApi.getGeocoding(cityName, country);
         assertNotNull(geocoding);
 
-        AirPollution airPollution = AirPollutionApi.getAirPollution(geocoding.getLat(), geocoding.getLon());
+        AirPollution airPollution = AirPollutionApi.getAirPollution(geocoding.lat(), geocoding.lon());
         assertNotNull(airPollution);
 
-        City porto = new City(cityName, country, geocoding.getLat(), geocoding.getLon(), airPollution.getAirQuality(), airPollution.getCo(), airPollution.getNo(), airPollution.getNo2(), airPollution.getO3(), airPollution.getSo2(), airPollution.getPm2_5(), airPollution.getPm10(), airPollution.getNh3());
+        City porto = new City(cityName, country, geocoding.lat(), geocoding.lon(), airPollution.getAirQuality(), airPollution.getCo(), airPollution.getNo(), airPollution.getNo2(), airPollution.getO3(), airPollution.getSo2(), airPollution.getPm2_5(), airPollution.getPm10(), airPollution.getNh3());
 
         when(service.getCity(cityName, country)).thenReturn(porto);
 
@@ -55,7 +55,7 @@ public class CityControllerTest {
 
     @Test
     @DisplayName("Test the GET /api/air_pollution endpoint with invalid city name")
-    public void whenGetCityByNameAndCountry_thenReturnError() throws Exception {
+    void whenGetCityByNameAndCountry_thenReturnError() throws Exception {
         String cityName = "New York";
         String country = "PT";
 
@@ -67,17 +67,17 @@ public class CityControllerTest {
     }
 
     @Test
-    @DisplayName("Test the GET /api/stats endpoint")
-    public void whenGetStats_thenReturnJsonArray() throws Exception {
-        mvc.perform(get("/api/stats")
+    @DisplayName("Test the GET /api/cache/stats endpoint")
+    void whenGetStats_thenReturnJsonArray() throws Exception {
+        mvc.perform(get("/api/cache/stats")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
     @Test
-    @DisplayName("Test the GET /api/cache endpoint")
-    public void whenGetCache_thenReturnJsonArray() throws Exception {
-        mvc.perform(get("/api/cache")
+    @DisplayName("Test the GET /api/cache/data endpoint")
+    void whenGetCache_thenReturnJsonArray() throws Exception {
+        mvc.perform(get("/api/cache/data")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }

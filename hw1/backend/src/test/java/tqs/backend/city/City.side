@@ -1,0 +1,192 @@
+{
+  "id": "13d0508f-ec26-4f54-bc27-46315031aceb",
+  "version": "2.0",
+  "name": "City",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "ec4719c1-de07-467a-8633-a6b08e68e23e",
+    "name": "CitySelenium",
+    "commands": [{
+      "id": "0d27b7f3-fc65-4ca1-b617-2e5889a79c9a",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6add4c8c-240c-4822-a13f-fb6bdb473d10",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x849",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fefee706-8795-44c1-85aa-2af12de76559",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiInput-input",
+      "targets": [
+        ["css=.MuiInput-input", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1ce51db5-e598-4458-aee8-8fd131648339",
+      "comment": "",
+      "command": "type",
+      "target": "css=.MuiInput-input",
+      "targets": [
+        ["css=.MuiInput-input", "css:finder"],
+        ["xpath=//input[@value='Porto']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Porto"
+    }, {
+      "id": "d9e8cc53-b382-4aa9-a6aa-e24db5ade458",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.MuiInput-input",
+      "targets": [
+        ["css=.MuiInput-input", "css:finder"],
+        ["xpath=//input[@value='Porto']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e36cdb6c-e8b6-4bb0-9041-b005dcdcd743",
+      "comment": "",
+      "command": "click",
+      "target": "id=country-autocomplete",
+      "targets": [
+        ["id=country-autocomplete", "id"],
+        ["css=#country-autocomplete", "css:finder"],
+        ["xpath=//input[@id='country-autocomplete']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6196bf2b-1387-4737-89f9-d913ae5bcf17",
+      "comment": "",
+      "command": "type",
+      "target": "id=country-autocomplete",
+      "targets": [
+        ["id=country-autocomplete", "id"],
+        ["css=#country-autocomplete", "css:finder"],
+        ["xpath=//input[@id='country-autocomplete']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/input", "xpath:position"]
+      ],
+      "value": "Portugal"
+    }, {
+      "id": "a9c1598a-7475-43f2-a10d-d426029ab9d9",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=country-autocomplete",
+      "targets": [
+        ["id=country-autocomplete", "id"],
+        ["css=#country-autocomplete", "css:finder"],
+        ["xpath=//input[@id='country-autocomplete']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[3]/div/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[3]/div/div/div/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "92af0b90-80a1-4875-8a37-0c7c3c5f8783",
+      "comment": "",
+      "command": "click",
+      "target": "id=country-autocomplete-option-0",
+      "targets": [
+        ["id=country-autocomplete-option-0", "id"],
+        ["css=#country-autocomplete-option-0", "css:finder"],
+        ["xpath=//li[@id='country-autocomplete-option-0']", "xpath:attributes"],
+        ["xpath=//ul[@id='country-autocomplete-listbox']/li", "xpath:idRelative"],
+        ["xpath=//li", "xpath:position"],
+        ["xpath=//li[contains(.,'Portugal')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0cd9c0f0-372b-43b7-a260-01f46720faf2",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.MuiButton-contained > .MuiButton-label",
+      "targets": [
+        ["css=.MuiButton-contained > .MuiButton-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button/span", "xpath:idRelative"],
+        ["xpath=//div[4]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aad1e6fc-49fb-47a0-81e8-e24aa0274293",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiButton-contained > .MuiButton-label",
+      "targets": [
+        ["css=.MuiButton-contained > .MuiButton-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button/span", "xpath:idRelative"],
+        ["xpath=//div[4]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "232b0f8c-07b7-4c11-b539-49b4b2687caa",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.MuiButton-contained > .MuiButton-label",
+      "targets": [
+        ["css=.MuiButton-contained > .MuiButton-label", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[4]/button/span", "xpath:idRelative"],
+        ["xpath=//div[4]/button/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af3bd9f6-d6e7-4ab6-b05c-f4d9006037df",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.MuiTableRow-root:nth-child(1) > .MuiTableCell-root:nth-child(2)",
+      "targets": [
+        ["css=.MuiTableRow-root:nth-child(1) > .MuiTableCell-root:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[5]/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Porto')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "78a7d5f5-6262-44d1-8093-09ca2cbe17e1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.MuiButtonBase-root:nth-child(2) > .MuiButton-label",
+      "targets": [
+        ["css=.MuiButtonBase-root:nth-child(2) > .MuiButton-label", "css:finder"],
+        ["xpath=//div[@id='root']/header/div/a[2]/span", "xpath:idRelative"],
+        ["xpath=//a[2]/span", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d31bc947-28e6-470c-9c38-15d6da8033d3",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.MuiPaper-root:nth-child(3) .MuiTableBody-root .MuiTableCell-root:nth-child(1)",
+      "targets": [
+        ["css=.MuiPaper-root:nth-child(3) .MuiTableBody-root .MuiTableCell-root:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//div[3]/table/tbody/tr/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Porto')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d624d2b7-0559-4aa7-bf36-523b70733cc9",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ec4719c1-de07-467a-8633-a6b08e68e23e"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}

@@ -18,13 +18,11 @@ const Cache = () => {
   useEffect(() => {
     // Fetch cache stats and cache data from API
     const fetchData = async () => {
-      const statsResponse = await fetch(
-        "http://localhost:8080/api/cache/stats"
-      );
+      const statsResponse = await fetch("cache/stats");
       const statsJson = await statsResponse.json();
       setCacheStats(statsJson);
 
-      const dataResponse = await fetch("http://localhost:8080/api/cache/data");
+      const dataResponse = await fetch("cache/data");
       const dataJson = await dataResponse.json();
       setCacheData(dataJson);
     };

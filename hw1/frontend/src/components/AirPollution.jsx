@@ -27,9 +27,7 @@ const AirPollution = () => {
     const cityName =
       city.substring(0, 1).toUpperCase() + city.substring(1).toLowerCase();
     const countryCode = countries.find((c) => c.name === country).code;
-    fetch(
-      `http://localhost:8080/api/air_pollution?cityName=${cityName}&country=${countryCode}`
-    )
+    fetch(`air_pollution?cityName=${cityName}&country=${countryCode}`)
       .then((response) => response.json())
       .then((data) => setAirPollutionData(data))
       .catch((error) => console.error(error));
